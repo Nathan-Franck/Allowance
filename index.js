@@ -127,16 +127,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     exports.startingTime = 1614908235844;
     exports.accounts = [
         { name: "Lilian", dollarsPerMonth: 40, awardSize: 0.5, awardName: "50¢ 🍭" },
-        { name: "Ashley", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
-        { name: "Nathan", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
-        { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
+        { name: "Ashley", dollarsPerMonth: 140, awardSize: 5, awardName: "$5 💵" },
+        { name: "Nathan", dollarsPerMonth: 140, awardSize: 5, awardName: "$5 💵" },
+        { name: "Food", dollarsPerMonth: 550, awardSize: 10, awardName: "$10 🍔" },
         { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
         { name: "Emergency", dollarsPerMonth: 200, awardSize: 100, awardName: "$100 🚑" },
         { name: "Vacation", dollarsPerMonth: 200, awardSize: 500, awardName: "$500 ✈" },
     ];
     exports.inflexibleMonthlyExpenses = {
-        "Mortgage [25y]": 1060,
-        "Student loans [32k @ 6y 9m from March]": 484,
+        "Mortgage [25y from July 2020]": 1060,
+        "Student loans [32k @ 6y 9m from March 2021]": 484,
         "House/car insurance": 300,
         "Gas/electricity": 300,
         "Property taxes": 200,
@@ -172,17 +172,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     exports.lastTransactionUpdateTime = exports.transactions = void 0;
     exports.transactions = [
         // Starting off with a certain amount of money in the accounts
-        ["Ashley", -10, "Starting bonus"],
-        ["Nathan", -10, "Starting bonus"],
-        ["Lilian", -3.5, "Starting bonus"],
-        ["Food", -150, "Starting bonus"],
-        ["Emergency", -400, "Starting bonus"],
-        ["Vacation", -0, "Starting bonus"],
-        ["Social", -40, "Starting bonus"],
-        // Some test transactions [makes it look more exciting to have offset counters]
-        ["Nathan", 1.5, "Test"],
-        ["Lilian", 0.17, "Test"],
-        ["Ashley", 0.92, "Test"],
+        ["Ashley", -44.73, "Starting bonus"],
+        ["Nathan", -38.28, "Starting bonus"],
+        ["Lilian", -10.5, "Starting bonus"],
+        ["Food", -154.9, "Starting bonus"],
+        ["Social", -42.24, "Starting bonus"],
+        ["Emergency", -327.28, "Starting bonus"],
+        ["Vacation", -696.75, "Starting bonus"],
     ];
     // 👇 Insert new timestamp each transaction update!
     exports.lastTransactionUpdateTime = 1614924888526;
@@ -227,7 +223,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         var secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
         var secondsPerAward = secondsPerDollar * account.awardSize;
         var amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
-        var currentAmountRaw = transactionRecord_1.transactions.filter(function (t) { return t[0] == account.name; }).reduce(function (total, t) { return total - t[1]; }, amountBeforeTransactions);
+        var currentAmountRaw = transactionRecord_1.transactions.filter(function (t) {
+            return t[0] == account.name;
+        }).reduce(function (total, t) { return total - t[1]; }, amountBeforeTransactions);
         var quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
         var progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
         var totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
