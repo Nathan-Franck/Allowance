@@ -1,17 +1,8 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
+import { transactions, lastTransactionUpdateTime } from "./transactionRecord";
 
 const startingTime = 1614908235844;
-
-export const transactions: Array<Transaction<AccountName>> = [
-    // Starting off with a certain amount of money in the accounts
-    ["Ashley", -10, "Starting bonus"],
-    ["Nathan", -10, "Starting bonus"],
-    ["Lilian", -3.5, "Starting bonus"],
-    ["Food", -150, "Starting bonus"],
-];
-export const lastTransactionUpdateTime = 1614921471214;
-
 
 export const accounts = [
     { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
@@ -46,7 +37,7 @@ const Allowances = () => {
         const secondsPerAward = secondsPerDollar * account.awardSize;
         const amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
         const currentAmountRaw = transactions.filter((t): t is Transaction<typeof account["name"]> =>
-            t[0] == account.name).reduce((total, t) => total -= t[1], amountBeforeTransactions);
+            t[0] == account.name).reduce((total, t) => total - t[1], amountBeforeTransactions);
         const quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
         const progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
         const totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);

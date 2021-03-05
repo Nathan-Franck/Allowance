@@ -25,29 +25,21 @@ var n,t,r,o=__webpack_require__(/*! preact */ "./node_modules/preact/dist/preact
 
 /***/ }),
 
-/***/ "./index.tsx":
-/*!*******************!*\
-  !*** ./index.tsx ***!
-  \*******************/
+/***/ "./App.tsx":
+/*!*****************!*\
+  !*** ./App.tsx ***!
+  \*****************/
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1, transactionRecord_1) {
     "use strict";
     exports.__esModule = true;
-    exports.accounts = exports.lastTransactionUpdateTime = exports.transactions = void 0;
+    exports.accounts = void 0;
     preact_1 = __importDefault(preact_1);
     var startingTime = 1614908235844;
-    exports.transactions = [
-        // Starting off with a certain amount of money in the accounts
-        ["Ashley", -10, "Starting bonus"],
-        ["Nathan", -10, "Starting bonus"],
-        ["Lilian", -3.5, "Starting bonus"],
-        ["Food", -150, "Starting bonus"],
-    ];
-    exports.lastTransactionUpdateTime = 1614921471214;
     exports.accounts = [
         { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
         { name: "Ashley", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
@@ -75,9 +67,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefa
             var secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
             var secondsPerAward = secondsPerDollar * account.awardSize;
             var amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
-            var currentAmountRaw = exports.transactions.filter(function (t) {
+            var currentAmountRaw = transactionRecord_1.transactions.filter(function (t) {
                 return t[0] == account.name;
-            }).reduce(function (total, t) { return total -= t[1]; }, amountBeforeTransactions);
+            }).reduce(function (total, t) { return total - t[1]; }, amountBeforeTransactions);
             var quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
             var progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
             var totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
@@ -125,7 +117,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefa
         gridAutoColumns: "auto auto auto",
         gridAutoFlow: "column",
     };
-    var lastTransactionDate = new Date(exports.lastTransactionUpdateTime);
+    var lastTransactionDate = new Date(transactionRecord_1.lastTransactionUpdateTime);
     var App = function () {
         var _a = hooks_1.useState(0), _ = _a[0], setSeconds = _a[1];
         hooks_1.useEffect(function () {
@@ -143,6 +135,33 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefa
             preact_1["default"].createElement("div", { style: allowanceStyle }, Allowances()));
     };
     preact_1["default"].render(preact_1["default"].createElement(App, null), document.body);
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
+/***/ "./transactionRecord.tsx":
+/*!*******************************!*\
+  !*** ./transactionRecord.tsx ***!
+  \*******************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
+    "use strict";
+    exports.__esModule = true;
+    exports.lastTransactionUpdateTime = exports.transactions = void 0;
+    exports.transactions = [
+        // Starting off with a certain amount of money in the accounts
+        ["Ashley", -10, "Starting bonus"],
+        ["Nathan", -10, "Starting bonus"],
+        ["Lilian", -3.5, "Starting bonus"],
+        ["Food", -150, "Starting bonus"],
+        ["Nathan", 1.5, "Test"],
+        ["Lilian", 0.17, "Test"],
+        ["Ashley", 0.92, "Test"],
+    ];
+    exports.lastTransactionUpdateTime = 1614921471214;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -179,7 +198,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefa
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./index.tsx");
+/******/ 	var __webpack_exports__ = __webpack_require__("./App.tsx");
 /******/ 	
 /******/ })()
 ;

@@ -7,7 +7,7 @@ module.exports = {
     mode: "development",
     devtool: 'source-map',
     entry: {
-        [outputFileName]: './index.tsx',
+        [outputFileName]: './App.tsx',
     },
     module: {
         rules: [

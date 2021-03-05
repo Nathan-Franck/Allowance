@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "sourceMap": true,
-        "outFile": "index.js",
         "module": "Amd",
         "moduleResolution": "node",
         "noImplicitAny": true,
