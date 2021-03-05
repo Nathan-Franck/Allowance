@@ -1,5 +1,5 @@
 import { accounts, startingTime } from "./budgetting";
-import { transactions } from "./transactionRecord";
+import { transactions } from "./transactions";
 import { Transaction } from "./types";
 
 export function millisToMonth(ms: number) {

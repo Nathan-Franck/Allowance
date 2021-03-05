@@ -2,7 +2,7 @@ import React from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { calculateAllowance } from "./utils";
 import { accounts } from "./budgetting";
-import { lastTransactionUpdateTime } from "./transactionRecord";
+import { lastTransactionUpdateTime } from "./transactions";
 
 const Allowances = () => {
     return accounts.map(account => {
