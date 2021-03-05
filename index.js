@@ -45,7 +45,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __assign = (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js"), __webpack_require__(/*! ./utils */ "./utils.tsx"), __webpack_require__(/*! ./budgetting */ "./budgetting.tsx"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1, utils_1, budgetting_1, transactionRecord_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js"), __webpack_require__(/*! ./utils */ "./utils.tsx"), __webpack_require__(/*! ./budgetting */ "./budgetting.tsx"), Object(function webpackMissingModule() { var e = new Error("Cannot find module './transactionRecord'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1, utils_1, budgetting_1, transactionRecord_1) {
     "use strict";
     exports.__esModule = true;
     preact_1 = __importDefault(preact_1);
@@ -160,42 +160,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
 /***/ }),
 
-/***/ "./transactionRecord.tsx":
-/*!*******************************!*\
-  !*** ./transactionRecord.tsx ***!
-  \*******************************/
-/***/ ((module, exports, __webpack_require__) => {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
-    "use strict";
-    exports.__esModule = true;
-    exports.lastTransactionUpdateTime = exports.transactions = void 0;
-    exports.transactions = [
-        // Starting off with a certain amount of money in the accounts
-        ["Ashley", -44.73, "Starting bonus"],
-        ["Nathan", -38.28, "Starting bonus"],
-        ["Lilian", -10.5, "Starting bonus"],
-        ["Food", -154.9, "Starting bonus"],
-        ["Social", -42.24, "Starting bonus"],
-        ["Emergency", -327.28, "Starting bonus"],
-        ["Vacation", -696.75, "Starting bonus"],
-    ];
-    // 👇 Insert new timestamp each transaction update!
-    exports.lastTransactionUpdateTime = 1614924888526;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-// Tool to insert timestamp - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
-
-
-/***/ }),
-
 /***/ "./utils.tsx":
 /*!*******************!*\
   !*** ./utils.tsx ***!
   \*******************/
 /***/ ((module, exports, __webpack_require__) => {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./budgetting */ "./budgetting.tsx"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, budgetting_1, transactionRecord_1) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./budgetting */ "./budgetting.tsx"), Object(function webpackMissingModule() { var e = new Error("Cannot find module './transactionRecord'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, budgetting_1, transactionRecord_1) {
     "use strict";
     exports.__esModule = true;
     exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = void 0;
