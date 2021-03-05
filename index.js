@@ -45,63 +45,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __assign = (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1, transactionRecord_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js"), __webpack_require__(/*! ./utils */ "./utils.tsx"), __webpack_require__(/*! ./budgetting */ "./budgetting.tsx"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1, utils_1, budgetting_1, transactionRecord_1) {
     "use strict";
     exports.__esModule = true;
-    exports.accounts = void 0;
     preact_1 = __importDefault(preact_1);
-    var startingTime = 1614908235844;
-    exports.accounts = [
-        { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
-        { name: "Ashley", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
-        { name: "Nathan", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
-        { name: "Lilian", dollarsPerMonth: 30, awardSize: 0.5, awardName: "50¢ 🍭" },
-    ];
-    var millisToMonth = function (ms) {
-        return ms
-            / 1000 // =second
-            / 60 //=minute
-            / 60 // =hour
-            / 24 // =day
-            / 30; // =month
-    };
-    var monthToSec = function (month) {
-        return month
-            * 30 // =day
-            * 24 // =hour
-            * 60 // =minute
-            * 60; //=second
-    };
     var Allowances = function () {
-        var timeSinceStartMonth = millisToMonth(Date.now() - startingTime);
-        return exports.accounts.map(function (account) {
-            var secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
-            var secondsPerAward = secondsPerDollar * account.awardSize;
-            var amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
-            var currentAmountRaw = transactionRecord_1.transactions.filter(function (t) {
-                return t[0] == account.name;
-            }).reduce(function (total, t) { return total - t[1]; }, amountBeforeTransactions);
-            var quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
-            var progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
-            var totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
-            var totalMinutesUntilAward = Math.floor(totalSecondsUntilAward / 60);
-            var hoursUntilAward = Math.floor(totalMinutesUntilAward / 60);
-            var minutesUntilAward = totalMinutesUntilAward - hoursUntilAward * 60;
-            var secondsUntilAward = totalSecondsUntilAward - totalMinutesUntilAward * 60;
+        return budgetting_1.accounts.map(function (account) {
+            var allowance = utils_1.calculateAllowance(account);
             return preact_1["default"].createElement(preact_1["default"].Fragment, null,
                 preact_1["default"].createElement("div", { style: { gridColumn: 1 } }, account.name),
                 preact_1["default"].createElement("div", { style: { gridColumn: 2 } },
                     "\uD83D\uDCB2",
-                    quantizedAmount.toFixed(2)),
+                    allowance.quantizedAmount.toFixed(2)),
                 preact_1["default"].createElement("div", { style: { gridColumn: 3 } },
                     preact_1["default"].createElement("i", null, "next"),
                     " ",
                     account.awardName,
                     preact_1["default"].createElement("i", null,
                         " in ",
-                        hoursUntilAward > 0 ? hoursUntilAward + "h " : "",
-                        minutesUntilAward > 0 ? minutesUntilAward + "m " : "",
-                        secondsUntilAward,
+                        allowance.daysUntilAward > 0 ? allowance.daysUntilAward + "d " : "",
+                        allowance.hoursUntilAward > 0 ? allowance.hoursUntilAward + "h " : "",
+                        allowance.minutesUntilAward > 0 ? allowance.minutesUntilAward + "m " : "",
+                        allowance.secondsUntilAward,
                         "s")));
         });
     };
@@ -115,7 +80,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
         color: colors["dark-fore"],
         backgroundColor: colors["dark-back"],
         margin: 0,
-        //padding: "1em",
         width: "100%",
         height: "100%",
         display: "grid",
@@ -123,13 +87,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     var gridItemStyle = {
         margin: "1em",
     };
-    var allowanceStyle = __assign(__assign({}, gridItemStyle), { 
-        // borderColor: colors["dark-fore"],
-        // borderWidth: 1,
-        // borderStyle: "solid",
-        display: "grid", gridAutoColumns: "auto auto auto", gridAutoFlow: "column" });
+    var allowanceStyle = __assign(__assign({}, gridItemStyle), { display: "grid", gridAutoColumns: "auto auto auto", gridAutoFlow: "column" });
     var lastTransactionDate = new Date(transactionRecord_1.lastTransactionUpdateTime);
     var App = function () {
+        // ⌚ Force update every second
         var _a = hooks_1.useState(0), _ = _a[0], setSeconds = _a[1];
         hooks_1.useEffect(function () {
             var interval = setInterval(function () {
@@ -137,6 +98,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             }, 1000);
             return function () { return clearInterval(interval); };
         }, []);
+        // ⌚
         return preact_1["default"].createElement("div", { style: bodyStyle },
             preact_1["default"].createElement("div", { style: gridItemStyle },
                 preact_1["default"].createElement("h1", null, "Allowance"),
@@ -146,6 +108,52 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
             preact_1["default"].createElement("div", { style: allowanceStyle }, Allowances()));
     };
     preact_1["default"].render(preact_1["default"].createElement(App, null), document.body);
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
+/***/ "./budgetting.tsx":
+/*!************************!*\
+  !*** ./budgetting.tsx ***!
+  \************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
+    "use strict";
+    exports.__esModule = true;
+    exports.inflexibleMonthlyExpenses = exports.accounts = exports.startingTime = void 0;
+    exports.startingTime = 1614908235844;
+    exports.accounts = [
+        { name: "Lilian", dollarsPerMonth: 30, awardSize: 0.5, awardName: "50¢ 🍭" },
+        { name: "Ashley", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
+        { name: "Nathan", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
+        { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
+        { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
+        { name: "Emergency", dollarsPerMonth: 200, awardSize: 100, awardName: "$100 🚑" },
+        { name: "Vacation", dollarsPerMonth: 200, awardSize: 500, awardName: "$500 ✈" },
+    ];
+    exports.inflexibleMonthlyExpenses = {
+        "Mortgage [25y]": 1060,
+        "Student loans [32k @ 6y 9m from March]": 484,
+        "House/car insurance": 300,
+        "Gas/electricity": 300,
+        "Property taxes": 200,
+        "Water": 150,
+        "Internet": 100,
+        "Cell": 80,
+    };
+    var allowanceTotal = exports.accounts.reduce(function (total, each) {
+        return total + each.dollarsPerMonth;
+    }, 0);
+    var inflexibleExpensesTotal = Object.entries(exports.inflexibleMonthlyExpenses).reduce(function (total, _a) {
+        var _ = _a[0], amount = _a[1];
+        return total + amount;
+    }, 0);
+    console.log("Allowance total: " + allowanceTotal);
+    console.log("Inflexible expenses total: " + inflexibleExpensesTotal);
+    console.log("Expected total outgo: " + (allowanceTotal + inflexibleExpensesTotal));
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -168,11 +176,70 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         ["Nathan", -10, "Starting bonus"],
         ["Lilian", -3.5, "Starting bonus"],
         ["Food", -150, "Starting bonus"],
+        ["Emergency", -400, "Starting bonus"],
+        ["Vacation", -0, "Starting bonus"],
+        ["Social", -40, "Starting bonus"],
+        // Some test transactions [makes it look more exciting to have offset counters]
         ["Nathan", 1.5, "Test"],
         ["Lilian", 0.17, "Test"],
         ["Ashley", 0.92, "Test"],
     ];
-    exports.lastTransactionUpdateTime = 1614921471214;
+    // 👇 Insert new timestamp each transaction update!
+    exports.lastTransactionUpdateTime = 1614924888526;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+// Tool to insert timestamp - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
+
+
+/***/ }),
+
+/***/ "./utils.tsx":
+/*!*******************!*\
+  !*** ./utils.tsx ***!
+  \*******************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./budgetting */ "./budgetting.tsx"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, budgetting_1, transactionRecord_1) {
+    "use strict";
+    exports.__esModule = true;
+    exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = void 0;
+    function millisToMonth(ms) {
+        return ms
+            / 1000 // =second
+            / 60 //=minute
+            / 60 // =hour
+            / 24 // =day
+            / 30; // =month
+    }
+    exports.millisToMonth = millisToMonth;
+    ;
+    function monthToSec(month) {
+        return month
+            * 30 // =day
+            * 24 // =hour
+            * 60 // =minute
+            * 60; //=second
+    }
+    exports.monthToSec = monthToSec;
+    ;
+    function calculateAllowance(account) {
+        var timeSinceStartMonth = millisToMonth(Date.now() - budgetting_1.startingTime);
+        var secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
+        var secondsPerAward = secondsPerDollar * account.awardSize;
+        var amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
+        var currentAmountRaw = transactionRecord_1.transactions.filter(function (t) { return t[0] == account.name; }).reduce(function (total, t) { return total - t[1]; }, amountBeforeTransactions);
+        var quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
+        var progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
+        var totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
+        var totalMinutesUntilAward = Math.floor(totalSecondsUntilAward / 60);
+        var totalHoursUntilAward = Math.floor(totalMinutesUntilAward / 60);
+        var daysUntilAward = Math.floor(totalHoursUntilAward / 24);
+        var hoursUntilAward = totalHoursUntilAward - daysUntilAward * 24;
+        var minutesUntilAward = totalMinutesUntilAward - totalHoursUntilAward * 60;
+        var secondsUntilAward = totalSecondsUntilAward - totalMinutesUntilAward * 60;
+        return { quantizedAmount: quantizedAmount, daysUntilAward: daysUntilAward, hoursUntilAward: hoursUntilAward, minutesUntilAward: minutesUntilAward, secondsUntilAward: secondsUntilAward };
+    }
+    exports.calculateAllowance = calculateAllowance;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 

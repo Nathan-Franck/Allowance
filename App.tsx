@@ -1,64 +1,28 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { transactions, lastTransactionUpdateTime } from "./transactionRecord";
+import { calculateAllowance } from "./utils";
+import { accounts } from "./budgetting";
+import { lastTransactionUpdateTime } from "./transactionRecord";
 
-const startingTime = 1614908235844;
-
-export const accounts = [
-    { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
-    { name: "Ashley", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
-    { name: "Nathan", dollarsPerMonth: 100, awardSize: 5, awardName: "$5 💵" },
-    { name: "Lilian", dollarsPerMonth: 30, awardSize: 0.5, awardName: "50¢ 🍭" },
-] as const;
-export type AccountName = typeof accounts[number]["name"];
-
-export type Transaction<A extends AccountName> = [account: A, purchase: number, note?: string];
-
-const millisToMonth = (ms: number) => {
-    return ms
-        / 1000 // =second
-        / 60 //=minute
-        / 60 // =hour
-        / 24 // =day
-        / 30 // =month
-}
-
-const monthToSec = (month: number) => {
-    return month
-        * 30 // =day
-        * 24 // =hour
-        * 60 // =minute
-        * 60 //=second
-}
 const Allowances = () => {
-    const timeSinceStartMonth = millisToMonth(Date.now() - startingTime);
     return accounts.map(account => {
-        const secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
-        const secondsPerAward = secondsPerDollar * account.awardSize;
-        const amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
-        const currentAmountRaw = transactions.filter((t): t is Transaction<typeof account["name"]> =>
-            t[0] == account.name).reduce((total, t) => total - t[1], amountBeforeTransactions);
-        const quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
-        const progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
-        const totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
-        const totalMinutesUntilAward = Math.floor(totalSecondsUntilAward / 60);
-        const hoursUntilAward = Math.floor(totalMinutesUntilAward / 60);
-        const minutesUntilAward = totalMinutesUntilAward - hoursUntilAward * 60;
-        const secondsUntilAward = totalSecondsUntilAward - totalMinutesUntilAward * 60;
+        const allowance = calculateAllowance(account);
         return <>
             <div style={{ gridColumn: 1 }}>{account.name}</div>
             <div style={{ gridColumn: 2 }}>💲{
-                quantizedAmount.toFixed(2)
+                allowance.quantizedAmount.toFixed(2)
             }</div>
             <div style={{ gridColumn: 3 }}><i>next</i> {
                 account.awardName
             }<i> in {
-                hoursUntilAward > 0 ? `${hoursUntilAward}h ` : ""
+                allowance.daysUntilAward > 0 ? `${allowance.daysUntilAward}d ` : ""
             }{
-                        minutesUntilAward > 0 ? `${minutesUntilAward}m ` : ""
-                    }{
-                        secondsUntilAward
-                    }s</i></div>
+                allowance.hoursUntilAward > 0 ? `${allowance.hoursUntilAward}h ` : ""
+            }{
+                allowance.minutesUntilAward > 0 ? `${allowance.minutesUntilAward}m ` : ""
+            }{
+                allowance.secondsUntilAward
+            }s</i></div>
         </>;
     })
 }
@@ -74,7 +38,6 @@ const bodyStyle: React.JSX.CSSProperties = {
     color: colors["dark-fore"],
     backgroundColor: colors["dark-back"],
     margin: 0,
-    //padding: "1em",
     width: "100%",
     height: "100%",
 
@@ -87,9 +50,6 @@ const gridItemStyle: React.JSX.CSSProperties = {
 
 const allowanceStyle: React.JSX.CSSProperties = {
     ...gridItemStyle,
-    // borderColor: colors["dark-fore"],
-    // borderWidth: 1,
-    // borderStyle: "solid",
     display: "grid",
     gridAutoColumns: "auto auto auto",
     gridAutoFlow: "column",
@@ -97,6 +57,8 @@ const allowanceStyle: React.JSX.CSSProperties = {
 
 const lastTransactionDate = new Date(lastTransactionUpdateTime);
 const App = () => {
+
+    // ⌚ Force update every second
     const [_, setSeconds] = useState(0);
     useEffect(() => {
         const interval = setInterval(() => {
@@ -104,6 +66,8 @@ const App = () => {
         }, 1000);
         return () => clearInterval(interval);
     }, []);
+    // ⌚
+
     return <div style={bodyStyle}>
         <div style={gridItemStyle}>
             <h1>Allowance</h1>
@@ -115,4 +79,6 @@ const App = () => {
     </div>
 }
 React.render(<App />, document.body);
+
+
 
