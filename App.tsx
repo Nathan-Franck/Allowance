@@ -70,21 +70,26 @@ const colors = {
 
 const bodyStyle: React.JSX.CSSProperties = {
     fontFamily: "'Trebuchet MS'",
-    fontSize: "14pt",
+    fontSize: "26pt",
     color: colors["dark-fore"],
     backgroundColor: colors["dark-back"],
     margin: 0,
-    padding: "1em",
+    //padding: "1em",
     width: "100%",
     height: "100%",
 
     display: "grid",
 };
 
+const gridItemStyle: React.JSX.CSSProperties = {
+    margin: "1em",
+}
+
 const allowanceStyle: React.JSX.CSSProperties = {
-    borderColor: colors["dark-fore"],
-    borderWidth: 1,
-    borderStyle: "solid",
+    ...gridItemStyle,
+    // borderColor: colors["dark-fore"],
+    // borderWidth: 1,
+    // borderStyle: "solid",
     display: "grid",
     gridAutoColumns: "auto auto auto",
     gridAutoFlow: "column",
@@ -100,7 +105,7 @@ const App = () => {
         return () => clearInterval(interval);
     }, []);
     return <div style={bodyStyle}>
-        <div>
+        <div style={gridItemStyle}>
             <h1>Allowance</h1>
             <i>Transactions last updated: {lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' })}</i>
         </div>

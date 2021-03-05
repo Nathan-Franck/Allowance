@@ -31,7 +31,18 @@ var n,t,r,o=__webpack_require__(/*! preact */ "./node_modules/preact/dist/preact
   \*****************/
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefault = (this && this.__importDefault) || function (mod) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! preact */ "./node_modules/preact/dist/preact.js"), __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hooks/dist/hooks.js"), __webpack_require__(/*! ./transactionRecord */ "./transactionRecord.tsx")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, preact_1, hooks_1, transactionRecord_1) {
@@ -100,23 +111,23 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefa
     };
     var bodyStyle = {
         fontFamily: "'Trebuchet MS'",
-        fontSize: "14pt",
+        fontSize: "26pt",
         color: colors["dark-fore"],
         backgroundColor: colors["dark-back"],
         margin: 0,
-        padding: "1em",
+        //padding: "1em",
         width: "100%",
         height: "100%",
         display: "grid",
     };
-    var allowanceStyle = {
-        borderColor: colors["dark-fore"],
-        borderWidth: 1,
-        borderStyle: "solid",
-        display: "grid",
-        gridAutoColumns: "auto auto auto",
-        gridAutoFlow: "column",
+    var gridItemStyle = {
+        margin: "1em",
     };
+    var allowanceStyle = __assign(__assign({}, gridItemStyle), { 
+        // borderColor: colors["dark-fore"],
+        // borderWidth: 1,
+        // borderStyle: "solid",
+        display: "grid", gridAutoColumns: "auto auto auto", gridAutoFlow: "column" });
     var lastTransactionDate = new Date(transactionRecord_1.lastTransactionUpdateTime);
     var App = function () {
         var _a = hooks_1.useState(0), _ = _a[0], setSeconds = _a[1];
@@ -127,7 +138,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __importDefa
             return function () { return clearInterval(interval); };
         }, []);
         return preact_1["default"].createElement("div", { style: bodyStyle },
-            preact_1["default"].createElement("div", null,
+            preact_1["default"].createElement("div", { style: gridItemStyle },
                 preact_1["default"].createElement("h1", null, "Allowance"),
                 preact_1["default"].createElement("i", null,
                     "Transactions last updated: ",
