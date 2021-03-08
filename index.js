@@ -181,7 +181,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         ["Vacation", -696.75, "Starting bonus"],
         ["Food", 62.32, "Groceries"],
     ];
-    // 👇 Insert new timestamp each transaction update!
+    // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
     exports.lastTransactionUpdateTime = 1615242405556;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -227,7 +227,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         var currentAmountRaw = transactions_1.transactions.filter(function (t) {
             return t[0] == account.name;
         }).reduce(function (total, t) { return total - t[1]; }, amountBeforeTransactions);
-        var quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
+        var quantizedAmount = Math.max(0, Math.floor(currentAmountRaw / account.awardSize) * account.awardSize);
         var progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
         var totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
         var totalMinutesUntilAward = Math.floor(totalSecondsUntilAward / 60);

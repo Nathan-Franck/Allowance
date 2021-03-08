@@ -14,6 +14,6 @@ export const transactions: Array<Transaction<AccountName>> = [
     ["Food", 62.32, "Groceries"],
 ];
 
-// 👇 Insert new timestamp each transaction update!
+// 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
 export const lastTransactionUpdateTime = 1615242405556;
 // Tool to insert timestamp - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring

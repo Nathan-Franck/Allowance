@@ -25,7 +25,7 @@ export function calculateAllowance(account: typeof accounts[number]) {
     const amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
     const currentAmountRaw = transactions.filter((t): t is Transaction<typeof account["name"]> =>
         t[0] == account.name).reduce((total, t) => total - t[1], amountBeforeTransactions);
-    const quantizedAmount = Math.floor(currentAmountRaw / account.awardSize) * account.awardSize;
+    const quantizedAmount = Math.max(0, Math.floor(currentAmountRaw / account.awardSize) * account.awardSize);
     const progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
     const totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
     const totalMinutesUntilAward = Math.floor(totalSecondsUntilAward / 60);
