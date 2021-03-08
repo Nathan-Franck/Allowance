@@ -104,7 +104,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
                 preact_1["default"].createElement("h1", null, "Allowance"),
                 preact_1["default"].createElement("i", null,
                     "Transactions last updated: ",
-                    lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' }))),
+                    lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric', hour: "numeric", hour12: true }))),
             preact_1["default"].createElement("div", { style: allowanceStyle }, Allowances()));
     };
     preact_1["default"].render(preact_1["default"].createElement(App, null), document.body);
@@ -179,9 +179,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         ["Social", -42.24, "Starting bonus"],
         ["Emergency", -327.28, "Starting bonus"],
         ["Vacation", -696.75, "Starting bonus"],
+        ["Food", 62.32, "Groceries"],
     ];
     // 👇 Insert new timestamp each transaction update!
-    exports.lastTransactionUpdateTime = 1614924888526;
+    exports.lastTransactionUpdateTime = 1615242405556;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 // Tool to insert timestamp - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring

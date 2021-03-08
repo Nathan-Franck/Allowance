@@ -71,7 +71,7 @@ const App = () => {
     return <div style={bodyStyle}>
         <div style={gridItemStyle}>
             <h1>Allowance</h1>
-            <i>Transactions last updated: {lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' })}</i>
+            <i>Transactions last updated: {lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric', hour: "numeric", hour12: true })}</i>
         </div>
         <div style={allowanceStyle}>
             {Allowances()}
