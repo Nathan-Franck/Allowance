@@ -179,13 +179,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         ["Social", -42.24, "Starting bonus"],
         ["Emergency", -327.28, "Starting bonus"],
         ["Vacation", -696.75, "Starting bonus"],
+        // Regular spending
         ["Food", 62.32, "Groceries"],
+        // Test transactions, figure out when you'll be able to make the next big purchase...
+        // ["Nathan", 900, "Laptop [Sell Previous]"], // 6 months of allowance 😔
     ];
     // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
     exports.lastTransactionUpdateTime = 1615242405556;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-// Tool to insert timestamp - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
+// Tool - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
 
 
 /***/ }),
