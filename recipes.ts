@@ -100,3 +100,21 @@ const recipes: {
         time: "20 minutes",
     }
 }
+
+const todo = [
+    "Thai beef bowl",
+    "Chicken with Mushroom Pan Sauce",
+    "Italian Sausage & Mozzarella Calzone",
+    "Curried Turkey",
+    "Baked Feta with Harissa Spiced Tomato Sauce",
+    "Creamy Mushroom Pasta",
+    "Thai Golden Lentil Curry",
+    "Moroccan Salmon Couscous Bowl",
+    "Spicy Caribbean Beef Tacos",
+    "Curried Chicken Naan Wraps",
+    "Bavarian Style Pork Chops",
+    "Honey-Sriracha Cauliflower Poke Bowl",
+    "Italian Lasagna Soup",
+    "Cheesy Turkey Melts",
+    "Irish Pork & Potato Stew",
+];
