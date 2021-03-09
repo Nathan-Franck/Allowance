@@ -6,6 +6,7 @@ const ingredients = {
     "whole wheat bread slices": "🍞",
     "bacon": "🥓",
     "butter": "🧈",
+    "water": "💧",
 } as const;
 
 const tags = [
