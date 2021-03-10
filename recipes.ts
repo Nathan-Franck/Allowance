@@ -85,15 +85,15 @@ const recipes: {
         tags: ["breakfast"],
         supplies: ["frying pan"],
         ingredients: {
-            "eggs": 1,
-            "bacon": 2,
+            "eggs": 2,
+            "bacon": 1,
             "whole wheat bread slices": 1,
             "butter": "1 teaspoon",
         },
         directions: [
             "Put whole wheat bread in toaster",
             "On frying pan, heat bacon until pan is covered in bacon grease",
-            "Crack eggs and add to pan beside bacon",
+            "Crack eggs and add to pan beside bacon, let cook until desired yolk hardness",
             "Add butter, bacon and eggs on toast",
         ],
         serves: 1,
