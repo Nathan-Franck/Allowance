@@ -126,9 +126,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     exports.inflexibleMonthlyExpenses = exports.accounts = exports.startingTime = void 0;
     exports.startingTime = 1614908235844;
     exports.accounts = [
-        { name: "Lilian", dollarsPerMonth: 40, awardSize: 0.5, awardName: "50¢ 🍭" },
-        { name: "Ashley", dollarsPerMonth: 140, awardSize: 5, awardName: "$5 💵" },
-        { name: "Nathan", dollarsPerMonth: 140, awardSize: 5, awardName: "$5 💵" },
+        { name: "Lilian", dollarsPerMonth: 60, awardSize: 0.5, awardName: "50¢ 🍭" },
+        { name: "Ashley", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
+        { name: "Nathan", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
         { name: "Food", dollarsPerMonth: 550, awardSize: 10, awardName: "$10 🍔" },
         { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
         { name: "Emergency", dollarsPerMonth: 200, awardSize: 100, awardName: "$100 🚑" },
