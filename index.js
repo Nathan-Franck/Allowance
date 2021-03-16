@@ -183,6 +183,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         ["Food", 62.32, "Groceries"],
         ["Food", 5.51, "Ashley Coffee"],
         ["Food", 124.36, "Groceries"],
+        ["Social", 11, "Salad"],
+        ["Nathan", 4, "Energy Drinks"],
         // Test transactions, figure out when you'll be able to make the next big purchase...
         // ["Nathan", 900, "Laptop [Sell Previous]"], // 6 months of allowance 😔
     ];
