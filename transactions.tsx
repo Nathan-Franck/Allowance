@@ -15,13 +15,14 @@ export const transactions: Array<Transaction<AccountName>> = [
     ["Food", 62.32, "Groceries"],
     ["Food", 5.51, "Ashley Coffee"],
     ["Food", 124.36, "Groceries"],
-    ["Social", 11, "Salad"],
-    ["Nathan", 4, "Energy Drinks"],
+    ["Social", 11.00, "Salad"],
+    ["Nathan", 4.00, "Energy Drinks"],
+    ["Food", 42.00, "Groceries"],
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // ["Nathan", 900, "Laptop [Sell Previous]"], // 6 months of allowance 😔
 ];
 
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
-export const lastTransactionUpdateTime = 1615242405556;
+export const lastTransactionUpdateTime = 1616040890182;
 // Tool - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
