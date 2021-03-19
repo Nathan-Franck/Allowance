@@ -187,7 +187,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         ["Nathan", 4.00, "Energy Drinks"],
         ["Food", 42.00, "Groceries"],
         // Test transactions, figure out when you'll be able to make the next big purchase...
-        // ["Nathan", 900, "Laptop [Sell Previous]"], // 6 months of allowance 😔
+        ["Nathan", 850, "Laptop"], // 6 months of allowance 😔 900
     ];
     // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
     exports.lastTransactionUpdateTime = 1616040890182;

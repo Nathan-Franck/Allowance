@@ -20,7 +20,7 @@ export const transactions: Array<Transaction<AccountName>> = [
     ["Food", 42.00, "Groceries"],
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
-    // ["Nathan", 900, "Laptop [Sell Previous]"], // 6 months of allowance 😔
+    ["Nathan", 850, "Laptop"], // 6 months of allowance 😔 900
 ];
 
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
