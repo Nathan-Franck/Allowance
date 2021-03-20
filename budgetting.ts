@@ -21,11 +21,7 @@ export const inflexibleMonthlyExpenses = {
     "Cell": 80,
 } as const;
 
-const allowanceTotal = accounts.reduce((total, each) =>
+export const allowanceTotal = accounts.reduce((total, each) =>
     total + each.dollarsPerMonth, 0);
-const inflexibleExpensesTotal = Object.entries(inflexibleMonthlyExpenses).reduce((total, [_, amount]) =>
+export const inflexibleExpensesTotal = Object.entries(inflexibleMonthlyExpenses).reduce((total, [_, amount]) =>
     total + amount, 0)
-
-console.log(`Allowance total: ${allowanceTotal}`);
-console.log(`Inflexible expenses total: ${inflexibleExpensesTotal}`);
-console.log(`Expected total outgo: ${allowanceTotal + inflexibleExpensesTotal}`);

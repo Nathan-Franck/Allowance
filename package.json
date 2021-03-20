@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/TacticalDan/Allowance#readme",
   "dependencies": {
-    "preact": "^10.5.12"
+    "preact": "^10.5.12",
+    "ts-node": "^9.1.1"
   },
   "devDependencies": {
     "ts-loader": "^8.0.17",
