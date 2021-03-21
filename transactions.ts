@@ -20,7 +20,10 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Social: 11.00 }, // Salad
     { Nathan: 4.00 }, // Energy Drinks
     { Food: 42.00 }, // Groceries
-    { Nathan: 850 }, // Laptop --- 6 months of allowance 😔
+    { Nathan: 850 }, // Surface Laptop 3
+    { Food: 80.92 }, // Groceries
+    { Food: 7.86 }, // Groceries
+    { Food: 100 }, // Outdoor rocking chairs
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];

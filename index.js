@@ -183,7 +183,10 @@ exports.transactions = [
     { Social: 11.00 },
     { Nathan: 4.00 },
     { Food: 42.00 },
-    { Nathan: 850 }, // Laptop --- 6 months of allowance 😔
+    { Nathan: 850 },
+    { Food: 80.92 },
+    { Food: 7.86 },
+    { Food: 100 }, // Outdoor rocking chairs
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
