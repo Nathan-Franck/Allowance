@@ -24,6 +24,8 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Food: 80.92 }, // Groceries
     { Food: 7.86 }, // Groceries
     { Food: 100 }, // Outdoor rocking chairs
+    { Food: 86.26 - 1.05 * (3.98 + 4.98 + 16.98 + 1.50) }, // Diapers, lighter, cups etc.
+    { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 }, // Toys
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];
