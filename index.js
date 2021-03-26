@@ -188,7 +188,9 @@ exports.transactions = [
     { Food: 7.86 },
     { Food: 100 },
     { Food: 86.26 - 1.05 * (3.98 + 4.98 + 16.98 + 1.50) },
-    { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 }, // Toys
+    { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 },
+    { Food: 19.99 * 1.05 },
+    { Food: (2.5 + 4.88 + 0.11 + 0.25 + 2.99 + 1.99) * 1.05 }, // Groceries
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]

@@ -1,5 +1,3 @@
-import { accounts } from "./budgetting";
-import { calculateAllowance } from "./utils";
 import { Transaction, AccountName } from "./types";
 
 export const transactions: Array<Transaction<AccountName>> = [
@@ -26,6 +24,8 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Food: 100 }, // Outdoor rocking chairs
     { Food: 86.26 - 1.05 * (3.98 + 4.98 + 16.98 + 1.50) }, // Diapers, lighter, cups etc.
     { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 }, // Toys
+    { Food: 19.99*1.05 }, // Prenatal vitamins
+    { Food: (2.5+4.88+0.11+0.25+2.99+1.99)*1.05 }, // Groceries
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];
