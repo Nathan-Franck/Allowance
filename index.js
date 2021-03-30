@@ -125,17 +125,25 @@ preact_1["default"].render(preact_1["default"].createElement(App, null), documen
 "use strict";
 
 exports.__esModule = true;
-exports.inflexibleExpensesTotal = exports.allowanceTotal = exports.inflexibleMonthlyExpenses = exports.accounts = exports.startingTime = void 0;
+exports.flexibleExpensesTotal = exports.inflexibleExpensesTotal = exports.allowanceTotal = exports.inflexibleMonthlyExpenses = exports.flexibleMonthlyExpenses = exports.accounts = exports.startingTime = void 0;
 exports.startingTime = 1614908235844;
 exports.accounts = [
     { name: "Lilian", dollarsPerMonth: 60, awardSize: 0.5, awardName: "50¢ 🍭" },
     { name: "Ashley", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
     { name: "Nathan", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
-    { name: "Food", dollarsPerMonth: 550, awardSize: 10, awardName: "$10 🍔" },
+    { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
     { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
-    { name: "Emergency", dollarsPerMonth: 200, awardSize: 100, awardName: "$100 🚑" },
-    { name: "Vacation", dollarsPerMonth: 200, awardSize: 500, awardName: "$500 ✈" },
+    { name: "House", dollarsPerMonth: 160, awardSize: 50, awardName: "$50 ⛏️" },
+    { name: "Emergency", dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
+    { name: "Vacation", dollarsPerMonth: 150, awardSize: 500, awardName: "$500 ✈" },
 ];
+exports.flexibleMonthlyExpenses = {
+    "Youtube Red Family": 16.00,
+    "Netflix": 10.00,
+    "Nintendo": 4.00,
+    "Expensive Cell vs. Minimum Cell": 50.00,
+    "Expensive House Insurance vs. Minimum": 100.00,
+};
 exports.inflexibleMonthlyExpenses = {
     "Mortgage [25y from July 2020]": 1060,
     "Student loans [32k @ 6y 9m from March 2021]": 484,
@@ -150,6 +158,10 @@ exports.allowanceTotal = exports.accounts.reduce(function (total, each) {
     return total + each.dollarsPerMonth;
 }, 0);
 exports.inflexibleExpensesTotal = Object.entries(exports.inflexibleMonthlyExpenses).reduce(function (total, _a) {
+    var _ = _a[0], amount = _a[1];
+    return total + amount;
+}, 0);
+exports.flexibleExpensesTotal = Object.entries(exports.flexibleMonthlyExpenses).reduce(function (total, _a) {
     var _ = _a[0], amount = _a[1];
     return total + amount;
 }, 0);
@@ -174,8 +186,9 @@ exports.transactions = [
     { Lilian: -10.5 },
     { Food: -154.9 },
     { Social: -42.24 },
-    { Emergency: -327.28 },
-    { Vacation: -696.75 },
+    { Emergency: -227.28 },
+    { Vacation: -596.75 },
+    { House: -200.92 },
     // Regular spending
     { Food: 62.32 },
     { Food: 5.51 },
@@ -186,11 +199,13 @@ exports.transactions = [
     { Nathan: 850 },
     { Food: 80.92 },
     { Food: 7.86 },
-    { Food: 100 },
+    { House: 100 },
     { Food: 86.26 - 1.05 * (3.98 + 4.98 + 16.98 + 1.50) },
     { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 },
     { Food: 19.99 * 1.05 },
-    { Food: (2.5 + 4.88 + 0.11 + 0.25 + 2.99 + 1.99) * 1.05 }, // Groceries
+    { Food: (2.5 + 4.88 + 0.11 + 0.25 + 2.99 + 1.99) * 1.05 },
+    { Food: 20.12 },
+    { House: 36.74 }, // Rake
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]

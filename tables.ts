@@ -1,4 +1,4 @@
-import { accounts, allowanceTotal, inflexibleExpensesTotal } from "./budgetting";
+import { accounts, allowanceTotal, flexibleExpensesTotal, inflexibleExpensesTotal } from "./budgetting";
 import { calculateAllowance } from "./utils";
 
 console.log("Allowances:");
@@ -14,5 +14,6 @@ console.log("Budgets:");
 console.table({
     "Allowance total": allowanceTotal,
     "Inflexible expenses total": inflexibleExpensesTotal,
-    "Expected total outgo": allowanceTotal + inflexibleExpensesTotal,
+    "Flexible expenses total": flexibleExpensesTotal,
+    "Expected total outgo": allowanceTotal + inflexibleExpensesTotal + flexibleExpensesTotal,
 });

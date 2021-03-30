@@ -8,8 +8,9 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Lilian: -10.5 }, // Starting bonus
     { Food: -154.9 }, // Starting bonus
     { Social: -42.24 }, // Starting bonus
-    { Emergency: -327.28 }, // Starting bonus
-    { Vacation: -696.75 }, // Starting bonus
+    { Emergency: -227.28 }, // Starting bonus
+    { Vacation: -596.75 }, // Starting bonus
+    { House: -200.92 }, // Starting bonus
 
     // Regular spending
     { Food: 62.32 }, // Groceries
@@ -21,11 +22,13 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Nathan: 850 }, // Surface Laptop 3
     { Food: 80.92 }, // Groceries
     { Food: 7.86 }, // Groceries
-    { Food: 100 }, // Outdoor rocking chairs
+    { House: 100 }, // Outdoor rocking chairs
     { Food: 86.26 - 1.05 * (3.98 + 4.98 + 16.98 + 1.50) }, // Diapers, lighter, cups etc.
     { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 }, // Toys
     { Food: 19.99*1.05 }, // Prenatal vitamins
     { Food: (2.5+4.88+0.11+0.25+2.99+1.99)*1.05 }, // Groceries
+    { Food: 20.12 }, // Groceries
+    { House: 36.74 }, // Rake
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
 ];

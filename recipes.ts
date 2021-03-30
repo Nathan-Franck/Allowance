@@ -42,7 +42,7 @@ type Time =
     | `1 minute`
     | `${number} minutes`
     | `1 second`
-    | `${number} seconds`
+    | `${number} seconds`;
 
 type Quantity =
     | `1 teaspoon`
@@ -53,7 +53,7 @@ type Quantity =
     | `${number} cups`
     | `${number} g`
     | `${number} ml`
-    | number
+    | number;
 
 type Recipe = {
     tags: typeof tags[number][],
