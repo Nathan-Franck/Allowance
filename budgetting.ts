@@ -6,9 +6,9 @@ export const accounts = [
     { name: "Nathan", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
     { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
     { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
-    { name: "House", dollarsPerMonth: 160, awardSize: 50, awardName: "$50 ⛏️" },
+    { name: "House", dollarsPerMonth: 260, awardSize: 50, awardName: "$50 ⛏️" },
     { name: "Emergency", dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
-    { name: "Vacation", dollarsPerMonth: 150, awardSize: 500, awardName: "$500 ✈" },
+    { name: "Vacation", dollarsPerMonth: 50, awardSize: 250, awardName: "$250 🚞" },
 ] as const;
 
 export const flexibleMonthlyExpenses = {

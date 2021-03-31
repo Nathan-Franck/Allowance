@@ -8,9 +8,9 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Lilian: -10.5 }, // Starting bonus
     { Food: -154.9 }, // Starting bonus
     { Social: -42.24 }, // Starting bonus
-    { Emergency: -227.28 }, // Starting bonus
-    { Vacation: -596.75 }, // Starting bonus
-    { House: -200.92 }, // Starting bonus
+    { Emergency: -127.28 }, // Starting bonus
+    { Vacation: -496.75 }, // Starting bonus
+    { House: -600.92 }, // Starting bonus
 
     // Regular spending
     { Food: 62.32 }, // Groceries
@@ -31,6 +31,10 @@ export const transactions: Array<Transaction<AccountName>> = [
     { House: 36.74 }, // Rake
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
+    // { House: 1200.00 }, // Insulation R40
+    // { House: 100.00 }, // Wheel barrow
+    // { House: 50.00 }, // Pickaxe
+    // { Nathan: 100.00 }, // Portable NVME SSD --- Short usb cable - https://www.amazon.ca/Afterplug-Charging-Chromebook-Nintendo-External/dp/B08816SYKY/ref=sr_1_20?dchild=1&keywords=15%2Bcm%2Busbc%2Bto%2Busbc%2Bcable&qid=1617127027&sr=8-20&th=1
 ];
 
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]

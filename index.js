@@ -133,9 +133,9 @@ exports.accounts = [
     { name: "Nathan", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
     { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
     { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
-    { name: "House", dollarsPerMonth: 160, awardSize: 50, awardName: "$50 ⛏️" },
+    { name: "House", dollarsPerMonth: 260, awardSize: 50, awardName: "$50 ⛏️" },
     { name: "Emergency", dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
-    { name: "Vacation", dollarsPerMonth: 150, awardSize: 500, awardName: "$500 ✈" },
+    { name: "Vacation", dollarsPerMonth: 50, awardSize: 250, awardName: "$250 🚞" },
 ];
 exports.flexibleMonthlyExpenses = {
     "Youtube Red Family": 16.00,
@@ -186,9 +186,9 @@ exports.transactions = [
     { Lilian: -10.5 },
     { Food: -154.9 },
     { Social: -42.24 },
-    { Emergency: -227.28 },
-    { Vacation: -596.75 },
-    { House: -200.92 },
+    { Emergency: -127.28 },
+    { Vacation: -496.75 },
+    { House: -600.92 },
     // Regular spending
     { Food: 62.32 },
     { Food: 5.51 },
@@ -207,6 +207,10 @@ exports.transactions = [
     { Food: 20.12 },
     { House: 36.74 }, // Rake
     // Test transactions, figure out when you'll be able to make the next big purchase...
+    // { House: 1200.00 }, // Insulation R40
+    // { House: 100.00 }, // Wheel barrow
+    // { House: 50.00 }, // Pickaxe
+    // { Nathan: 100.00 }, // Portable NVME SSD --- Short usb cable - https://www.amazon.ca/Afterplug-Charging-Chromebook-Nintendo-External/dp/B08816SYKY/ref=sr_1_20?dchild=1&keywords=15%2Bcm%2Busbc%2Bto%2Busbc%2Bcable&qid=1617127027&sr=8-20&th=1
 ];
 // 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
 exports.lastTransactionUpdateTime = 1616040890182;
