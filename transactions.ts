@@ -30,6 +30,7 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Food: 20.12 }, // Groceries
     { House: 36.74 }, // Rake
     { Food: 39.22 }, // Groceries + Baby Formula ($25 for 900ml)
+    { House: 16.00 }, // Leaf grabber
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40

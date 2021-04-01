@@ -206,7 +206,8 @@ exports.transactions = [
     { Food: (2.5 + 4.88 + 0.11 + 0.25 + 2.99 + 1.99) * 1.05 },
     { Food: 20.12 },
     { House: 36.74 },
-    { Food: 39.22 }, // Groceries + Baby Formula ($25 for 900ml)
+    { Food: 39.22 },
+    { House: 16.00 }, // Leaf grabber
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow
