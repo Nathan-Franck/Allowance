@@ -207,7 +207,10 @@ exports.transactions = [
     { Food: 20.12 },
     { House: 36.74 },
     { Food: 39.22 },
-    { House: 16.00 }, // Leaf grabber
+    { House: 16.00 },
+    { Ashley: 2.09 },
+    { Lilian: 25.19 },
+    { Social: 9.44 }
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow
