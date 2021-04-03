@@ -210,7 +210,10 @@ exports.transactions = [
     { House: 16.00 },
     { Ashley: 2.09 },
     { Lilian: 25.19 },
-    { Social: 9.44 }
+    { Social: 9.44 },
+    { Food: 37.01 },
+    { Food: 18.04 },
+    { Emergency: 67.29 }, // Gas
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow

@@ -33,7 +33,10 @@ export const transactions: Array<Transaction<AccountName>> = [
     { House: 16.00 }, // Leaf grabber
     { Ashley: 2.09 },
     { Lilian: 25.19 },
-    { Social: 9.44 }
+    { Social: 9.44 },
+    { Food: 37.01 }, // Groceries
+    { Food: 18.04 }, // Fast food
+    { Emergency: 67.29 }, // Gas
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
