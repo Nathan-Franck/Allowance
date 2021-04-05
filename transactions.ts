@@ -25,8 +25,8 @@ export const transactions: Array<Transaction<AccountName>> = [
     { House: 100 }, // Outdoor rocking chairs
     { Food: 86.26 - 1.05 * (3.98 + 4.98 + 16.98 + 1.50) }, // Diapers, lighter, cups etc.
     { Lilian: 1.05 * (3.98 + 4.98 + 16.98 + 1.50) + 10 }, // Toys
-    { Food: 19.99*1.05 }, // Prenatal vitamins
-    { Food: (2.5+4.88+0.11+0.25+2.99+1.99)*1.05 }, // Groceries
+    { Food: 19.99 * 1.05 }, // Prenatal vitamins
+    { Food: (2.5 + 4.88 + 0.11 + 0.25 + 2.99 + 1.99) * 1.05 }, // Groceries
     { Food: 20.12 }, // Groceries
     { House: 36.74 }, // Rake
     { Food: 39.22 }, // Groceries + Baby Formula ($25 for 900ml)
