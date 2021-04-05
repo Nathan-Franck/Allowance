@@ -262,7 +262,11 @@ exports.transactions = [
     { Lilian: 25.19 },
     { Social: 9.44 },
     { Nathan: -850.00 },
-    { Social: 10.00 }, // Kid's slide
+    {
+        Social: 10.00 / 3,
+        Ashley: 10.00 / 3,
+        Lilian: 10.00 / 3,
+    }, // Kid's slide
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow
