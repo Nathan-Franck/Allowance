@@ -2,7 +2,6 @@ import React from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { calculateAllowance } from "./utils";
 import { accounts } from "./budgetting";
-import { lastTransactionUpdateTime } from "./transactions";
 
 const Allowances = () => {
     return accounts.map(account => {
@@ -17,12 +16,12 @@ const Allowances = () => {
             }<i> in {
                 allowance.daysUntilAward > 0 ? `${allowance.daysUntilAward}d ` : ""
             }{
-                allowance.hoursUntilAward > 0 ? `${allowance.hoursUntilAward}h ` : ""
-            }{
-                allowance.minutesUntilAward > 0 ? `${allowance.minutesUntilAward}m ` : ""
-            }{
-                allowance.secondsUntilAward
-            }s</i></div>
+                        allowance.hoursUntilAward > 0 ? `${allowance.hoursUntilAward}h ` : ""
+                    }{
+                        allowance.minutesUntilAward > 0 ? `${allowance.minutesUntilAward}m ` : ""
+                    }{
+                        allowance.secondsUntilAward
+                    }s</i></div>
         </>;
     })
 }
@@ -46,39 +45,43 @@ const bodyStyle: React.JSX.CSSProperties = {
 
 const gridItemStyle: React.JSX.CSSProperties = {
     margin: "1em",
-}
+};
 
 const allowanceStyle: React.JSX.CSSProperties = {
     ...gridItemStyle,
     display: "grid",
     gridAutoColumns: "auto auto auto",
     gridAutoFlow: "column",
-}
+};
 
-const lastTransactionDate = new Date(lastTransactionUpdateTime);
-const App = () => {
+(async () => {
+    const buildInfoResponse = await fetch("buildInfo.json");
+    const buildInfo = await buildInfoResponse.json() as { timestamp: number };
+    const lastTransactionDate = new Date(buildInfo.timestamp);
+    console.log(buildInfo); 
+    const App = () => {
 
-    // ⌚ Force update every second
-    const [_, setSeconds] = useState(0);
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setSeconds(seconds => seconds + 1);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
-    // ⌚
+        // ⌚ Force update every second
+        const [_, setSeconds] = useState(0);
+        useEffect(() => {
+            const interval = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+            }, 1000);
+            return () => clearInterval(interval);
+        }, []);
+        // ⌚
 
-    return <div style={bodyStyle}>
-        <div style={gridItemStyle}>
-            <h1>Allowance</h1>
-            <i>Transactions last updated: {lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric', hour: "numeric", hour12: true })}</i>
+        return <div style={bodyStyle}>
+            <div style={gridItemStyle}>
+                <h1>Allowance</h1>
+                <i>Transactions last updated: {lastTransactionDate.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric', hour: "numeric", hour12: true })}</i>
+            </div>
+            <div style={allowanceStyle}>
+                {Allowances()}
+            </div>
         </div>
-        <div style={allowanceStyle}>
-            {Allowances()}
-        </div>
-    </div>
-}
-React.render(<App />, document.body);
-
+    }
+    React.render(<App />, document.body);
+})();
 
 
