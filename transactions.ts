@@ -35,6 +35,7 @@ export const transactions: Array<Transaction<AccountName>> = [
     { Lilian: 25.19 },
     { Social: 9.44 },
     { Nathan: -850.00 }, // Sold graphics card (1080ti)
+    { Social: 10.00 }, // Kid's slide
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
@@ -42,7 +43,3 @@ export const transactions: Array<Transaction<AccountName>> = [
     // { House: 50.00 }, // Pickaxe
     // { Nathan: 100.00 }, // Portable NVME SSD --- Short usb cable - https://www.amazon.ca/Afterplug-Charging-Chromebook-Nintendo-External/dp/B08816SYKY/ref=sr_1_20?dchild=1&keywords=15%2Bcm%2Busbc%2Bto%2Busbc%2Bcable&qid=1617127027&sr=8-20&th=1
 ];
-
-// 👇 Insert new timestamp each transaction update! [ctrl+shift+i]
-export const lastTransactionUpdateTime = 1616040890182;
-// Tool - https://marketplace.visualstudio.com/items?itemName=jsynowiec.vscode-insertdatestring
