@@ -289,6 +289,7 @@ exports.transactions = [
 
 exports.__esModule = true;
 exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = exports.objectEntries = void 0;
+/** Strictly typed wrapper for Object.entries */
 function objectEntries(obj) {
     return Object.entries(obj);
 }

@@ -1,3 +1,4 @@
+/** Strictly typed wrapper for Object.entries */
 export function objectEntries<T>(obj: T) {
     return Object.entries(obj) as [keyof T, T[keyof T]][];
 }
