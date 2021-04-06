@@ -139,7 +139,6 @@ var allowanceStyle = __assign(__assign({}, gridItemStyle), { display: "grid", gr
             case 2:
                 buildInfo = _a.sent();
                 lastTransactionDate = new Date(buildInfo.timestamp);
-                console.log(buildInfo);
                 App = function () {
                     // ⌚ Force update every second
                     var _a = hooks_1.useState(0), _ = _a[0], setSeconds = _a[1];

@@ -58,7 +58,6 @@ const allowanceStyle: React.JSX.CSSProperties = {
     const buildInfoResponse = await fetch("buildInfo.json");
     const buildInfo = await buildInfoResponse.json() as { timestamp: number };
     const lastTransactionDate = new Date(buildInfo.timestamp);
-    console.log(buildInfo); 
     const App = () => {
 
         // ⌚ Force update every second
