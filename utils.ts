@@ -1,6 +1,6 @@
-import { startingTime } from "./budgetting";
-import { transactions } from "./transactions";
-import { AccountName, Accounts, Transaction } from "./types";
+export function objectEntries<T>(obj: T) {
+    return Object.entries(obj) as [keyof T, T[keyof T]][];
+}
 
 export function millisToMonth(ms: number) {
     return ms
@@ -17,6 +17,10 @@ export function monthToSec(month: number) {
         * 60 // =minute
         * 60; //=second
 };
+
+import { startingTime } from "./budgetting";
+import { transactions } from "./transactions";
+import { AccountName, Accounts, Transaction } from "./types";
 
 export function calculateAllowance<Name extends AccountName>(params: { name: Name, account: Accounts[Name] }) {
     const { name, account } = params;
@@ -38,8 +42,4 @@ export function calculateAllowance<Name extends AccountName>(params: { name: Nam
     const minutesUntilAward = totalMinutesUntilAward - totalHoursUntilAward * 60;
     const secondsUntilAward = totalSecondsUntilAward - totalMinutesUntilAward * 60;
     return { quantizedAmount, daysUntilAward, hoursUntilAward, minutesUntilAward, secondsUntilAward };
-}
-
-export function objectEntries<T>(obj: T) {
-    return Object.entries(obj) as [keyof T, T[keyof T]][];
 }

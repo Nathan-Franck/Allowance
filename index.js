@@ -288,9 +288,11 @@ exports.transactions = [
 "use strict";
 
 exports.__esModule = true;
-exports.objectEntries = exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = void 0;
-var budgetting_1 = __webpack_require__(/*! ./budgetting */ "./budgetting.ts");
-var transactions_1 = __webpack_require__(/*! ./transactions */ "./transactions.ts");
+exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = exports.objectEntries = void 0;
+function objectEntries(obj) {
+    return Object.entries(obj);
+}
+exports.objectEntries = objectEntries;
 function millisToMonth(ms) {
     return ms
         / 1000 // =second
@@ -310,6 +312,8 @@ function monthToSec(month) {
 }
 exports.monthToSec = monthToSec;
 ;
+var budgetting_1 = __webpack_require__(/*! ./budgetting */ "./budgetting.ts");
+var transactions_1 = __webpack_require__(/*! ./transactions */ "./transactions.ts");
 function calculateAllowance(params) {
     var name = params.name, account = params.account;
     var timeSinceStartMonth = millisToMonth(Date.now() - budgetting_1.startingTime);
@@ -333,10 +337,6 @@ function calculateAllowance(params) {
     return { quantizedAmount: quantizedAmount, daysUntilAward: daysUntilAward, hoursUntilAward: hoursUntilAward, minutesUntilAward: minutesUntilAward, secondsUntilAward: secondsUntilAward };
 }
 exports.calculateAllowance = calculateAllowance;
-function objectEntries(obj) {
-    return Object.entries(obj);
-}
-exports.objectEntries = objectEntries;
 
 
 /***/ })
