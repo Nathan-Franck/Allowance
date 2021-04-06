@@ -11,17 +11,21 @@ const Allowances = () => {
             <div style={{ gridColumn: 2 }}>💲{
                 allowance.quantizedAmount.toFixed(2)
             }</div>
-            <div style={{ gridColumn: 3 }}><i>next</i> {
-                account.awardName
-            }<i> in {
-                allowance.daysUntilAward > 0 ? `${allowance.daysUntilAward}d ` : ""
-            }{
+            <div style={{ gridColumn: 3 }}>
+                <i>next</i> {
+                    account.awardName
+                }<i>
+                    in {
+                        allowance.daysUntilAward > 0 ? `${allowance.daysUntilAward}d ` : ""
+                    }{
                         allowance.hoursUntilAward > 0 ? `${allowance.hoursUntilAward}h ` : ""
                     }{
                         allowance.minutesUntilAward > 0 ? `${allowance.minutesUntilAward}m ` : ""
                     }{
                         allowance.secondsUntilAward
-                    }s</i></div>
+                    }s
+                    </i>
+            </div>
         </>;
     })
 }

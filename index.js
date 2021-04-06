@@ -102,7 +102,7 @@ var Allowances = function () {
                 " ",
                 account.awardName,
                 preact_1["default"].createElement("i", null,
-                    " in ",
+                    "in ",
                     allowance.daysUntilAward > 0 ? allowance.daysUntilAward + "d " : "",
                     allowance.hoursUntilAward > 0 ? allowance.hoursUntilAward + "h " : "",
                     allowance.minutesUntilAward > 0 ? allowance.minutesUntilAward + "m " : "",
