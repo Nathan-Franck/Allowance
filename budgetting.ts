@@ -1,15 +1,17 @@
+import { objectEntries } from "./utils";
+
 export const startingTime = 1614908235844;
 
-export const accounts = [
-    { name: "Lilian", dollarsPerMonth: 60, awardSize: 0.5, awardName: "50¢ 🍭" },
-    { name: "Ashley", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
-    { name: "Nathan", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
-    { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
-    { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
-    { name: "House", dollarsPerMonth: 260, awardSize: 50, awardName: "$50 ⛏️" },
-    { name: "Emergency", dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
-    { name: "Vacation", dollarsPerMonth: 50, awardSize: 250, awardName: "$250 🚞" },
-] as const;
+export const accounts = {
+    "Lilian": { dollarsPerMonth: 60, awardSize: 0.5, awardName: "50¢ 🍭" },
+    "Ashley": { dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
+    "Nathan": { dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
+    "Food": { dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
+    "Social": { dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
+    "House": { dollarsPerMonth: 260, awardSize: 50, awardName: "$50 ⛏️" },
+    "Emergency": { dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
+    "Vacation": { dollarsPerMonth: 50, awardSize: 250, awardName: "$250 🚞" },
+ } as const;
 
 export const flexibleMonthlyExpenses = {
     "Youtube Red Family": 16.00,
@@ -30,9 +32,9 @@ export const inflexibleMonthlyExpenses = {
     "Cell": 80,
 } as const;
 
-export const allowanceTotal = accounts.reduce((total, each) =>
+export const allowanceTotal = objectEntries(accounts).reduce((total, [_, each]) =>
     total + each.dollarsPerMonth, 0);
-export const inflexibleExpensesTotal = Object.entries(inflexibleMonthlyExpenses).reduce((total, [_, amount]) =>
+export const inflexibleExpensesTotal = objectEntries(inflexibleMonthlyExpenses).reduce((total, [_, amount]) =>
     total + amount, 0)
-export const flexibleExpensesTotal = Object.entries(flexibleMonthlyExpenses).reduce((total, [_, amount]) =>
+export const flexibleExpensesTotal = objectEntries(flexibleMonthlyExpenses).reduce((total, [_, amount]) =>
     total + amount, 0)

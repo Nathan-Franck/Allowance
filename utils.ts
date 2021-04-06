@@ -1,6 +1,6 @@
-import { accounts, startingTime } from "./budgetting";
+import { startingTime } from "./budgetting";
 import { transactions } from "./transactions";
-import { Transaction } from "./types";
+import { AccountName, Accounts, Transaction } from "./types";
 
 export function millisToMonth(ms: number) {
     return ms
@@ -18,13 +18,16 @@ export function monthToSec(month: number) {
         * 60; //=second
 };
 
-export function calculateAllowance(account: typeof accounts[number]) {
+export function calculateAllowance<Name extends AccountName>(params: { name: Name, account: Accounts[Name] }) {
+    const { name, account } = params;
     const timeSinceStartMonth = millisToMonth(Date.now() - startingTime);
     const secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
     const secondsPerAward = secondsPerDollar * account.awardSize;
     const amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
-    const currentAmountRaw = transactions.filter((t): t is Transaction<typeof account["name"]> =>
-        t[account.name] != null).reduce((total, t) => total - t[account.name], amountBeforeTransactions);
+    const currentAmountRaw = transactions
+        .filter((t): t is Transaction =>
+            t[name] != null)
+        .reduce<number>((total, t) => total - t[name], amountBeforeTransactions);
     const quantizedAmount = Math.max(0, Math.floor(currentAmountRaw / account.awardSize) * account.awardSize);
     const progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
     const totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
@@ -35,4 +38,8 @@ export function calculateAllowance(account: typeof accounts[number]) {
     const minutesUntilAward = totalMinutesUntilAward - totalHoursUntilAward * 60;
     const secondsUntilAward = totalSecondsUntilAward - totalMinutesUntilAward * 60;
     return { quantizedAmount, daysUntilAward, hoursUntilAward, minutesUntilAward, secondsUntilAward };
+}
+
+export function objectEntries<T>(obj: T) {
+    return Object.entries(obj) as [keyof T, T[keyof T]][];
 }

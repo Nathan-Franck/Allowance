@@ -89,10 +89,11 @@ var hooks_1 = __webpack_require__(/*! preact/hooks */ "./node_modules/preact/hoo
 var utils_1 = __webpack_require__(/*! ./utils */ "./utils.ts");
 var budgetting_1 = __webpack_require__(/*! ./budgetting */ "./budgetting.ts");
 var Allowances = function () {
-    return budgetting_1.accounts.map(function (account) {
-        var allowance = utils_1.calculateAllowance(account);
+    return utils_1.objectEntries(budgetting_1.accounts).map(function (_a) {
+        var name = _a[0], account = _a[1];
+        var allowance = utils_1.calculateAllowance({ name: name, account: account });
         return preact_1["default"].createElement(preact_1["default"].Fragment, null,
-            preact_1["default"].createElement("div", { style: { gridColumn: 1 } }, account.name),
+            preact_1["default"].createElement("div", { style: { gridColumn: 1 } }, name),
             preact_1["default"].createElement("div", { style: { gridColumn: 2 } },
                 "\uD83D\uDCB2",
                 allowance.quantizedAmount.toFixed(2)),
@@ -170,23 +171,24 @@ var allowanceStyle = __assign(__assign({}, gridItemStyle), { display: "grid", gr
 /*!***********************!*\
   !*** ./budgetting.ts ***!
   \***********************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 exports.__esModule = true;
 exports.flexibleExpensesTotal = exports.inflexibleExpensesTotal = exports.allowanceTotal = exports.inflexibleMonthlyExpenses = exports.flexibleMonthlyExpenses = exports.accounts = exports.startingTime = void 0;
+var utils_1 = __webpack_require__(/*! ./utils */ "./utils.ts");
 exports.startingTime = 1614908235844;
-exports.accounts = [
-    { name: "Lilian", dollarsPerMonth: 60, awardSize: 0.5, awardName: "50¢ 🍭" },
-    { name: "Ashley", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
-    { name: "Nathan", dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
-    { name: "Food", dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
-    { name: "Social", dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
-    { name: "House", dollarsPerMonth: 260, awardSize: 50, awardName: "$50 ⛏️" },
-    { name: "Emergency", dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
-    { name: "Vacation", dollarsPerMonth: 50, awardSize: 250, awardName: "$250 🚞" },
-];
+exports.accounts = {
+    "Lilian": { dollarsPerMonth: 60, awardSize: 0.5, awardName: "50¢ 🍭" },
+    "Ashley": { dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
+    "Nathan": { dollarsPerMonth: 130, awardSize: 5, awardName: "$5 💵" },
+    "Food": { dollarsPerMonth: 500, awardSize: 10, awardName: "$10 🍔" },
+    "Social": { dollarsPerMonth: 60, awardSize: 20, awardName: "$20 🎮" },
+    "House": { dollarsPerMonth: 260, awardSize: 50, awardName: "$50 ⛏️" },
+    "Emergency": { dollarsPerMonth: 150, awardSize: 100, awardName: "$100 🚑" },
+    "Vacation": { dollarsPerMonth: 50, awardSize: 250, awardName: "$250 🚞" },
+};
 exports.flexibleMonthlyExpenses = {
     "Youtube Red Family": 16.00,
     "Netflix": 10.00,
@@ -204,14 +206,15 @@ exports.inflexibleMonthlyExpenses = {
     "Internet": 100,
     "Cell": 80,
 };
-exports.allowanceTotal = exports.accounts.reduce(function (total, each) {
+exports.allowanceTotal = utils_1.objectEntries(exports.accounts).reduce(function (total, _a) {
+    var _ = _a[0], each = _a[1];
     return total + each.dollarsPerMonth;
 }, 0);
-exports.inflexibleExpensesTotal = Object.entries(exports.inflexibleMonthlyExpenses).reduce(function (total, _a) {
+exports.inflexibleExpensesTotal = utils_1.objectEntries(exports.inflexibleMonthlyExpenses).reduce(function (total, _a) {
     var _ = _a[0], amount = _a[1];
     return total + amount;
 }, 0);
-exports.flexibleExpensesTotal = Object.entries(exports.flexibleMonthlyExpenses).reduce(function (total, _a) {
+exports.flexibleExpensesTotal = utils_1.objectEntries(exports.flexibleMonthlyExpenses).reduce(function (total, _a) {
     var _ = _a[0], amount = _a[1];
     return total + amount;
 }, 0);
@@ -286,7 +289,7 @@ exports.transactions = [
 "use strict";
 
 exports.__esModule = true;
-exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = void 0;
+exports.objectEntries = exports.calculateAllowance = exports.monthToSec = exports.millisToMonth = void 0;
 var budgetting_1 = __webpack_require__(/*! ./budgetting */ "./budgetting.ts");
 var transactions_1 = __webpack_require__(/*! ./transactions */ "./transactions.ts");
 function millisToMonth(ms) {
@@ -308,14 +311,17 @@ function monthToSec(month) {
 }
 exports.monthToSec = monthToSec;
 ;
-function calculateAllowance(account) {
+function calculateAllowance(params) {
+    var name = params.name, account = params.account;
     var timeSinceStartMonth = millisToMonth(Date.now() - budgetting_1.startingTime);
     var secondsPerDollar = monthToSec(1) / account.dollarsPerMonth;
     var secondsPerAward = secondsPerDollar * account.awardSize;
     var amountBeforeTransactions = timeSinceStartMonth * account.dollarsPerMonth;
-    var currentAmountRaw = transactions_1.transactions.filter(function (t) {
-        return t[account.name] != null;
-    }).reduce(function (total, t) { return total - t[account.name]; }, amountBeforeTransactions);
+    var currentAmountRaw = transactions_1.transactions
+        .filter(function (t) {
+        return t[name] != null;
+    })
+        .reduce(function (total, t) { return total - t[name]; }, amountBeforeTransactions);
     var quantizedAmount = Math.max(0, Math.floor(currentAmountRaw / account.awardSize) * account.awardSize);
     var progressToAward = (currentAmountRaw - quantizedAmount) / account.awardSize;
     var totalSecondsUntilAward = Math.floor((1 - progressToAward) * secondsPerAward);
@@ -328,6 +334,10 @@ function calculateAllowance(account) {
     return { quantizedAmount: quantizedAmount, daysUntilAward: daysUntilAward, hoursUntilAward: hoursUntilAward, minutesUntilAward: minutesUntilAward, secondsUntilAward: secondsUntilAward };
 }
 exports.calculateAllowance = calculateAllowance;
+function objectEntries(obj) {
+    return Object.entries(obj);
+}
+exports.objectEntries = objectEntries;
 
 
 /***/ })

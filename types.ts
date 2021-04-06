@@ -1,4 +1,5 @@
 import { accounts } from "./budgetting";
 
-export type AccountName = typeof accounts[number]["name"];
-export type Transaction<A extends AccountName> = { [key in A]?: number }
+export type Accounts = typeof accounts;
+export type AccountName = keyof Accounts;
+export type Transaction = { [key in keyof Accounts]?: number }

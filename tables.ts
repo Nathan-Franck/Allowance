@@ -1,10 +1,11 @@
+import { AccountName } from "types";
 import { accounts, allowanceTotal, flexibleExpensesTotal, inflexibleExpensesTotal } from "./budgetting";
-import { calculateAllowance } from "./utils";
+import { calculateAllowance, objectEntries } from "./utils";
 
 console.log("Allowances:");
-const allowances = accounts.map(account => {
-    const result = calculateAllowance(account);
-    return { name: account.name, amount: result.quantizedAmount, days: result.daysUntilAward, hours: result.hoursUntilAward, minutes: result.minutesUntilAward, seconds: result.secondsUntilAward, };
+const allowances = objectEntries(accounts).map(([name, account]) => {
+    const result = calculateAllowance({ name, account });
+    return { name: name, amount: result.quantizedAmount, days: result.daysUntilAward, hours: result.hoursUntilAward, minutes: result.minutesUntilAward, seconds: result.secondsUntilAward, };
 });
 console.table([
     ...allowances,

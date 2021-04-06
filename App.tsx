@@ -1,13 +1,13 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { calculateAllowance } from "./utils";
+import { calculateAllowance, objectEntries } from "./utils";
 import { accounts } from "./budgetting";
 
 const Allowances = () => {
-    return accounts.map(account => {
-        const allowance = calculateAllowance(account);
+    return objectEntries(accounts).map(([name, account]) => {
+        const allowance = calculateAllowance({ name, account });
         return <>
-            <div style={{ gridColumn: 1 }}>{account.name}</div>
+            <div style={{ gridColumn: 1 }}>{name}</div>
             <div style={{ gridColumn: 2 }}>💲{
                 allowance.quantizedAmount.toFixed(2)
             }</div>

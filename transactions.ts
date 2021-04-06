@@ -1,6 +1,6 @@
-import { Transaction, AccountName } from "./types";
+import { Transaction } from "./types";
 
-export const transactions: Array<Transaction<AccountName>> = [
+export const transactions: Array<Transaction> = [
 
     // Starting off with a certain amount of money in the accounts
     { Ashley: -44.73 }, // Starting bonus
