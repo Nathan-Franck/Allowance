@@ -268,7 +268,9 @@ exports.transactions = [
         Social: 10.00 / 3,
         Ashley: 10.00 / 3,
         Lilian: 10.00 / 3,
-    }, // Kid's slide
+    },
+    { Food: 45.86 - 0.85 * 1.05 * (6.99 + 0.40) },
+    { Nathan: 0.85 * 1.05 * (6.99 + 0.40) }, // Energy Drinks (15% off day)
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow
