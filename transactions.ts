@@ -42,6 +42,11 @@ export const transactions: Array<Transaction> = [
     }, // Kid's slide
     { Food: 45.86 - 0.85 * 1.05 * (6.99 + 0.40) }, // Groceries (15% off day)
     { Nathan: 0.85 * 1.05 * (6.99 + 0.40) }, // Energy Drinks (15% off day)
+    { Food: 86.28 }, // Groceries
+    { Food: 6.00 }, // Coffees [estimate]
+    { Food: 27.29 }, // Propane
+    { House: 422.42 }, // Insulation [6 bags of R20 batting]
+
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40

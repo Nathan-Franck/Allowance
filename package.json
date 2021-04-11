@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack watch": "npx webpack --watch",
-    "recalculate tables": "ts-node tables.ts"
+    "webpack-watch": "npx webpack --watch",
+    "recalculate-tables": "ts-node tables.ts"
   },
   "repository": {
     "type": "git",
