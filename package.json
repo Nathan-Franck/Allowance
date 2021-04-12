@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "webpack-watch": "npx webpack --watch",
-    "recalculate-tables": "ts-node tables.ts"
+    "recalculate-tables": "ts-node tables.ts",
+    "push git transaction": "git add -A && git commit -m '[TRANSACTION]' && git push"
   },
   "repository": {
     "type": "git",
