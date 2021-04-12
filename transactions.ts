@@ -46,7 +46,7 @@ export const transactions: Array<Transaction> = [
     { Food: 6.00 }, // Coffees [estimate]
     { Food: 27.29 }, // Propane
     { House: 422.42 }, // Insulation [6 bags of R20 batting]
-    { Nathan: 6.00 }, // Snacks
+    { Nathan: 8.47 }, // Snacks
 
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
