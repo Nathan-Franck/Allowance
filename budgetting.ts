@@ -18,6 +18,7 @@ export const flexibleMonthlyExpenses = {
     "Netflix": 10.00, //?
     "Nintendo": 4.00, //?
     "Expensive Cell vs. Minimum Cell": 50.00,
+    "Cut down on electricity and heating needs": 50.00, // 🤷🏼 Hard to say how this is done
     "Expensive House Insurance vs. Minimum": 100.00,
 };
 
@@ -25,7 +26,7 @@ export const inflexibleMonthlyExpenses = {
     "Mortgage [25y from July 2020]": 1060,
     "Student loans [32k @ 6y 9m from March 2021]": 484,
     "House/car insurance": 300,
-    "Gas/electricity": 300,
+    "Gas/electricity": 550,
     "Property taxes": 200,
     "Water": 150,
     "Internet": 100,
