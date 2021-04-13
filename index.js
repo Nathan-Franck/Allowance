@@ -278,7 +278,8 @@ exports.transactions = [
     { House: 422.42 },
     { Nathan: 8.47 },
     { Food: 92.61 - 1.00 },
-    { Nathan: 1.00 }, // Gum
+    { Nathan: 1.00 },
+    { Social: 5.00 }, // Giving to homeless man in parking lot
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow

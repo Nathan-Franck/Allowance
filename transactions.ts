@@ -49,6 +49,7 @@ export const transactions: Array<Transaction> = [
     { Nathan: 8.47 }, // Snacks
     { Food: 92.61 - 1.00 }, // Groceries ($14 of candy bars)
     { Nathan: 1.00 }, // Gum
+    { Social: 5.00 }, // Giving to homeless man in parking lot
 
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
