@@ -47,6 +47,8 @@ export const transactions: Array<Transaction> = [
     { Food: 27.29 }, // Propane
     { House: 422.42 }, // Insulation [6 bags of R20 batting]
     { Nathan: 8.47 }, // Snacks
+    { Food: 92.61 - 1.00 }, // Groceries ($14 of candy bars)
+    { Nathan: 1.00 }, // Gum
 
 
     // Test transactions, figure out when you'll be able to make the next big purchase...
@@ -55,3 +57,4 @@ export const transactions: Array<Transaction> = [
     // { House: 50.00 }, // Pickaxe
     // { Nathan: 100.00 }, // Portable NVME SSD --- Short usb cable - https://www.amazon.ca/Afterplug-Charging-Chromebook-Nintendo-External/dp/B08816SYKY/ref=sr_1_20?dchild=1&keywords=15%2Bcm%2Busbc%2Bto%2Busbc%2Bcable&qid=1617127027&sr=8-20&th=1
 ];
+
