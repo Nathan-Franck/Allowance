@@ -5,8 +5,7 @@ const outputFileName = "index";
 const outputFilePath = "./";
 
 module.exports = {
-    mode: "development",
-    devtool: 'source-map',
+    mode: "production",
     entry: {
         [outputFileName]: './App.tsx',
     },
