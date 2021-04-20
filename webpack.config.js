@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 
 const outputFileName = "index";
 const outputFilePath = "./";
@@ -14,7 +15,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /secrets.ts/],
             },
         ],
     },
@@ -32,6 +33,10 @@ module.exports = {
         filename: '[name].js',
     },
     plugins: [
+        // Ignore secrets
+        new webpack.IgnorePlugin({
+            resourceRegExp: /secret/
+        }),
         // 📝 Update version file so browser caches will be invalidated with new version
         {
             apply: compiler => {
