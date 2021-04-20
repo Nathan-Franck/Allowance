@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "💵 Push New Transaction": "npx webpack && git add -A && git commit -m '[TRANSACTION]' && git push",
+    "💵 Push New Transaction": "npx webpack && git add -A && git commit -m '[TRANSACTION]' && git push && cd ../.. git add libs/allowance/transactions.ts && git commit -m '[TRANSACTION]'",
     "📈 Recalculate Tables": "ts-node tables.ts"
   },
   "repository": {

@@ -145,7 +145,8 @@ exports.transactions = [
     { Ashley: 5 * 1.05 },
     { House: 256 },
     { Nathan: 4.20 * 1.05 },
-    { Food: 42.68 - 4.20 * 1.05 }, // Groceries
+    { Food: 42.68 - 4.20 * 1.05 },
+    { Nathan: 0 } // Nothing
     // Test transactions, figure out when you'll be able to make the next big purchase...
     // { House: 1200.00 }, // Insulation R40
     // { House: 100.00 }, // Wheel barrow
