@@ -1,7 +1,7 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { calculateAllowance, objectEntries } from "./utils";
-import { accounts } from "./budgetting";
+import { calculateAllowance, objectEntries } from "../../libs/utils";
+import { accounts } from "../../libs/allowance/budgetting";
 
 const Allowances = () => {
     return objectEntries(accounts).map(([name, account]) => {
