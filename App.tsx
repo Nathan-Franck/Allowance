@@ -1,6 +1,7 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { calculateAllowance, objectEntries } from "../../libs/utils";
+import { objectEntries } from "../../libs/utils";
+import { calculateAllowance } from "../../libs/allowance/calculateAllowance"
 import { accounts } from "../../libs/allowance/budgetting";
 
 const Allowances = () => {
