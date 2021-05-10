@@ -1,6 +1,6 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
-import { objectEntries } from "../../libs/utils";
+import { objectEntries } from "../../libs/utils/pipe";
 import { calculateAllowance } from "../../libs/allowance/calculateAllowance"
 import { accounts } from "../../libs/allowance/budgetting";
 
