@@ -1,12 +1,18 @@
 import React from "preact";
 import { useEffect, useState } from "preact/hooks";
 import { objectEntries } from "../../libs/utils/pipe";
-import { calculateAllowance } from "../../libs/allowance/calculateAllowance"
-import { accounts } from "../../libs/allowance/budgetting";
+import { calculateAllowances } from "../../libs/allowance/calculateAllowance"
+import { allowances } from "../../libs/allowance/allowances";
 
 const Allowances = () => {
-    return objectEntries(accounts).map(([name, account]) => {
-        const allowance = calculateAllowance({ name, account });
+    return objectEntries(allowances[allowances.length - 1].accounts).map(([name, account]) => {
+        const allowance = calculateAllowances({
+            name,
+            allowances: allowances.map(allowance => ({
+                startTime: allowance.startTime,
+                account: allowance.accounts[name]
+            })),
+        });
         return <>
             <div style={{ gridColumn: 1 }}>{name}</div>
             <div style={{ gridColumn: 2 }}>💲{
@@ -25,7 +31,7 @@ const Allowances = () => {
                     }{
                         allowance.secondsUntilAward
                     }s
-                    </i>
+                </i>
             </div>
         </>;
     })
