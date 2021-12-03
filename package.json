@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TacticalDan/Allowance.git"
+    "url": "git+https://github.com/Nathan-Franck/Allowance.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TacticalDan/Allowance/issues"
+    "url": "https://github.com/Nathan-Franck/Allowance/issues"
   },
-  "homepage": "https://github.com/TacticalDan/Allowance#readme",
+  "homepage": "https://github.com/Nathan-Franck/Allowance#readme",
   "dependencies": {
     "preact": "^10.5.12",
     "ts-node": "^9.1.1",
