@@ -1,0 +1,60 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\natha\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js run recalculate-tables
+
+PATH: 
+  C:\Users\natha\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\natha\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Users\natha\AppData\Local\Microsoft\WindowsApps;C:\Users\natha\AppData\Local\Programs\Microsoft VS Code\bin;C:\Projects\Languages\Zig;C:\Users\natha\.dotnet\tools;C:\Users\natha\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.14.2
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Projects\Coding\Finance\package.json: Unexpected token / in JSON at position 53
+      at JSON.parse (<anonymous>)
+      at C:\Users\natha\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\natha\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\natha\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "website-allowance",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "push-new-transaction": "npx webpack && git add -A && git commit -m '[TRANSACTION]' && git push && cd ../.. && git add libs/allowance/transactions.ts && git commit -m '[TRANSACTION]'",
+      "recalculate-tables": "ts-node ../../libs/allowance/tables.ts"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Nathan-Franck/Allowance.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Nathan-Franck/Allowance/issues"
+    },
+    "homepage": "https://github.com/Nathan-Franck/Allowance#readme",
+    "dependencies": {
+      "preact": "^10.5.12",
+      "ts-node": "^9.1.1",
+      "typescript": "^4.2.4"
+    },
+    "devDependencies": {
+      "ts-loader": "^8.0.17",
+      "webpack": "^5.64.4",
+      "webpack-cli": "^4.5.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
