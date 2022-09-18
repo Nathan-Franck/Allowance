@@ -74,10 +74,9 @@ const allowanceStyle: React.JSX.CSSProperties = {
         // ⌚ Force update every second
         const [_, setSeconds] = useState(0);
         useEffect(() => {
-            const interval = setInterval(() => {
+            setInterval(() => {
                 setSeconds(seconds => seconds + 1);
             }, 1000);
-            return () => clearInterval(interval);
         }, []);
         // ⌚
 
